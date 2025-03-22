@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Windows Update</title>
+  <title>Windows Updating...</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background-color: #0078d7; /* Windows blue */
+      background-color: black;
       height: 100vh;
       width: 100vw;
       color: white;
@@ -17,11 +17,6 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-    }
-
-    img {
-      width: 120px;
-      margin-bottom: 40px;
     }
 
     .updating-text {
@@ -52,7 +47,6 @@
       font-size: 18px;
     }
 
-    /* Spinner */
     .spinner {
       border: 6px solid rgba(255, 255, 255, 0.2);
       border-top: 6px solid white;
@@ -67,18 +61,13 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-
   </style>
 </head>
 <body>
 
-  <!-- Microsoft Logo -->
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" />
-
   <!-- Updating Text -->
   <div class="updating-text">
-    Working on updates<br>
-    Don't turn off your PC. This will take a while.
+    Windows Updating...
   </div>
 
   <!-- Spinner -->
@@ -106,7 +95,7 @@
     // Start with 10% immediately
     updateProgress();
 
-    // Then update every hour (3600000 ms)
+    // Update every hour (3600000 ms)
     setInterval(updateProgress, 3600000);
   </script>
 
