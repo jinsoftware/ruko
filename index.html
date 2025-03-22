@@ -16,6 +16,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
     img {
@@ -25,7 +26,9 @@
 
     .updating-text {
       font-size: 24px;
+      text-align: center;
       margin-bottom: 30px;
+      line-height: 1.5;
     }
 
     .progress {
@@ -34,6 +37,7 @@
       background-color: rgba(255,255,255,0.2);
       border-radius: 10px;
       overflow: hidden;
+      margin-top: 20px;
     }
 
     .bar {
@@ -47,6 +51,23 @@
       margin-top: 10px;
       font-size: 18px;
     }
+
+    /* Spinner */
+    .spinner {
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid white;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-top: 40px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
   </style>
 </head>
 <body>
@@ -55,7 +76,13 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo" />
 
   <!-- Updating Text -->
-  <div class="updating-text">Working on updates<br>Don't turn off your PC. This will take a while.</div>
+  <div class="updating-text">
+    Working on updates<br>
+    Don't turn off your PC. This will take a while.
+  </div>
+
+  <!-- Spinner -->
+  <div class="spinner"></div>
 
   <!-- Progress Bar -->
   <div class="progress">
@@ -76,9 +103,11 @@
       }
     }
 
-    // हर घंटे 10% बढ़ेगा
-    updateProgress(); // स्टार्ट में 10%
-    setInterval(updateProgress, 3600000); // हर घंटे
+    // Start with 10% immediately
+    updateProgress();
+
+    // Then update every hour (3600000 ms)
+    setInterval(updateProgress, 3600000);
   </script>
 
 </body>
