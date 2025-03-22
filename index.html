@@ -20,10 +20,10 @@
     }
 
     .updating-text {
-      font-size: 24px;
+      font-size: 22px;
       text-align: center;
-      margin-bottom: 30px;
-      line-height: 1.5;
+      margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     .progress {
@@ -61,13 +61,15 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
   </style>
 </head>
 <body>
 
-  <!-- Updating Text -->
-  <div class="updating-text">
-    Windows Updating...
+  <div class="updating-text" id="updateText">
+    Working on updates<br>
+    Installing update 1 of 27...<br>
+    Do not turn off or unplug your computer.
   </div>
 
   <!-- Spinner -->
@@ -81,22 +83,35 @@
 
   <script>
     let percent = 0;
+    let updateNumber = 1;
     const bar = document.getElementById("progress-bar");
     const percentText = document.getElementById("percent-text");
+    const updateText = document.getElementById("updateText");
 
     function updateProgress() {
       if (percent < 100) {
         percent += 10;
+        updateNumber++;
         bar.style.width = percent + "%";
         percentText.textContent = percent + "% complete";
+        updateText.innerHTML = `
+          Working on updates<br>
+          Installing update ${updateNumber} of 27...<br>
+          Do not turn off or unplug your computer.
+        `;
+      } else {
+        updateText.innerHTML = `
+          Finalizing updates...<br>
+          Please wait while we finish up.
+        `;
       }
     }
 
     // Start with 10% immediately
     updateProgress();
 
-    // Update every hour (3600000 ms)
-    setInterval(updateProgress, 3600000);
+    // Update every hour (3600000 ms), but for demo/testing use smaller time (e.g., 10 sec)
+    setInterval(updateProgress, 3600000); // Change to 10000 (10s) if you want fast test
   </script>
 
 </body>
